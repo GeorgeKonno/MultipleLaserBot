@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<robot name="mlbot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find turtlebot3_description)/urdf/mlbot.gazebo.xacro"/>
+</robot>
