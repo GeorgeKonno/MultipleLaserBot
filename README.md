@@ -1,4 +1,4 @@
-# MutipleLaserBot!
+# MutipleLaserBot
 20世纪以来，室内外自主移动机器人飞速发展，并以此为契机出现了大量的创业型公司。
 得益于ROS这个开发体系的日渐完善，能够被直接调用的开源机器人导航及建图算法也越来越多。
 就SLAM而言，包括激光，视觉或者语义在内的算法框架不下五十种。
@@ -13,4 +13,4 @@
 本项目大部分算法来源于开源包，也有一部分引用论文的实现和改进，例如：现在非常火热的基于语义的点云匹配，以及submap-submap的新型cartographer等。
 一部分对于原始包的优化，读者可以根据commit的记录追溯。
 项目持续开发，结束时间不确定，如有发现bug或者有更多的方案，可以提交pr。
-[Screenshot from 2022-04-21 10-44-38](https://user-images.githubusercontent.com/61740700/164361408-3b282c94-3882-46d2-9604-bf33fbad439a.png)
+![Screenshot from 2022-04-21 10-44-38](https://user-images.githubusercontent.com/61740700/164361408-3b282c94-3882-46d2-9604-bf33fbad439a.png)
