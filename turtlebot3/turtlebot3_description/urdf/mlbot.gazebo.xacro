@@ -230,7 +230,7 @@
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_2dscan"/>
-    <origin xyz="0.0 0 0.20" rpy="0 0 0"/>
+    <origin xyz="0.0 0 0.23" rpy="0 0 0"/>
   </joint>
 
   <link name="base_2dscan">
@@ -424,7 +424,7 @@
 
   <!-- add laser simulation plugines adaptored for rplidar A1M8 -->
   <gazebo reference="velodyne">
-    <sensor type="ray" name="velodyne-VLP16">      <!-- ray   -->   <!-- gpu_ray -->
+    <sensor type="gpu_ray" name="velodyne-VLP16">      
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
       <update_rate>10</update_rate>
@@ -433,14 +433,14 @@
           <horizontal>
             <samples>1875</samples>
             <resolution>1</resolution>
-            <min_angle>0.9</min_angle>
-            <max_angle>130</max_angle>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28</max_angle>
           </horizontal>
           <vertical>
             <samples>16</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.26</min_angle>   <!-- 15 -->
-            <max_angle> 0.26</max_angle>
+            <resolution>2</resolution>
+            <min_angle> -0.52 </min_angle>   
+            <max_angle> 0.52</max_angle>
           </vertical>
         </scan>
         <range>
@@ -454,7 +454,7 @@
           <stddev>0.0</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">     <!-- libgazebo_ros_velodyne_gpu_laser  --> <!-- libgazebo_ros_velodyne_laser  -->
+      <plugin name="gazebo_ros_laser_controller2" filename="libgazebo_ros_velodyne_gpu_laser.so">   
         <topicName>/velodyne_points</topicName>
         <frameName>velodyne</frameName>
         <organize_cloud>false</organize_cloud>
@@ -464,6 +464,7 @@
       </plugin>
     </sensor>
   </gazebo>
+
   <!--*********************************************************************-->
 
   <!-- add imu link simlations plugines  -->
