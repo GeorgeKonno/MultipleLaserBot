@@ -44,8 +44,9 @@
     <!--- Sim Time -->
 
     <!--- TF -->
-    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0 1.570795   0        1.570795 /map2    /camera_init 10" />
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 0 0 -1.570795 -1.570795 0        /camera /base_link2   10" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0 1.570795   0        1.570795 /map2    /camera_init" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_camera" args="0 0 0 -1.570795 -1.570795 0        /camera /base_link2" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map2_to_map" args="0 0 0  -0.785, -1.571, -0.785       /camera_init /map" />
     <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_to_base_foot" args="0 0 0 0 0 0        /base_footprint /base_link   100" /> -->
     <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_to_velodyne" args="-0.032 0.0 0.13 0 0 0      /base_link  /velodyne 10" />   -->
 
