@@ -15,11 +15,10 @@
     </plugin>
   </gazebo> -->
   <link name="base_footprint"/>
-  <link name="base_link2"/>
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link" />
-    <origin xyz="0 0 0.010" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
   <link name="base_link">
@@ -227,81 +226,12 @@
     </plugin>
   </gazebo>
 
-  <joint name="scan_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_2dscan"/>
-    <origin xyz="0.0 0 0.23" rpy="0 0 0"/>
-  </joint>
-
-  <link name="base_2dscan">
-    <visual>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://turtlebot3_description/meshes/sensors/lds.stl" scale="0.00075 0.00075 0.00075"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-  </link>
-  <gazebo reference="base_2dscan">
-    <material>Gazebo/Blue</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
-      <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
-      <update_rate>10</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>360</samples>
-            <resolution>1</resolution>
-            <min_angle>0.0</min_angle>
-            <max_angle>6.28319</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.120</min>
-          <max>3.5</max>
-          <resolution>0.015</resolution>
-        </range>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.01</stddev>
-        </noise>
-      </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <topicName>scan</topicName>
-        <frameName>base_2dscan</frameName>
-      </plugin>
-    </sensor>
-  </gazebo>
-
-  <link name="cylinder_link">
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <cylinder length="0.033" radius="0.09"/>
-      </geometry>
-    </visual>
-  </link>
-  <joint name ="cylinder_joints" type="fixed">
-    <origin xyz="0.0 0.0 0.10" rpy="0.0 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="cylinder_link"/>
-  </joint>
-  <gazebo reference="cylinder_link">
-    <material>Gazebo/Yellow </material>
-  </gazebo>
 
 <!--******************* add VLP laser Link *************************************-->
-  <joint name="base_base2_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0.0 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="base_link2"/>
-  </joint>
 
   <joint name="VLP16_base_mount_joint" type="fixed">
     <origin xyz="0 0.0 0.115" rpy="0.0 0.0 0.0"/>
-    <parent link="base_link2"/>
+    <parent link="base_link"/>
     <child link="VLP16_base_link"/>
   </joint>
 
@@ -355,23 +285,11 @@
     </visual>
   </link>
   <joint name ="imu_joints" type="fixed">
-    <origin xyz="-0.10 0.0 0.02" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
   </joint>
 
-  <link name="imu_link2">
-  <visual>
-    <geometry>
-      <box size="0.015 0.015 0.007"/>
-    </geometry>
-  </visual>
-  </link>
-  <joint name ="imu_joints2" type="fixed">
-    <origin xyz="-0.10 0.0 0.02" rpy="0.0 0.0 0.0"/>
-    <parent link="base_link2"/>
-    <child link="imu_link2"/>
-  </joint>
   <!--*********************************************************************-->
 
   <link name="box_link">
@@ -408,17 +326,6 @@
     <material>Gazebo/Green </material>
   </gazebo>
 
-  <!--add color for links -->
-  <gazebo reference="base_link">
-    <material>Gazebo/DarkGrey </material>
-  </gazebo>
-
-
-  <!--add color for links -->
-  <gazebo reference="base_link">
-    <material>Gazebo/DarkGrey </material>
-  </gazebo>
-
   
   <!--*********************************************************************-->
 
@@ -438,15 +345,15 @@
           </horizontal>
           <vertical>
             <samples>16</samples>
-            <resolution>2</resolution>
-            <min_angle> -0.52 </min_angle>   
-            <max_angle> 0.52</max_angle>
+            <resolution>1</resolution>
+            <min_angle> -0.26 </min_angle>   
+            <max_angle> 0.26</max_angle>
           </vertical>
         </scan>
         <range>
           <min>0.9</min>
-          <max>131</max>
-          <resolution>0.001</resolution>
+          <max>60</max>
+          <resolution>0.01</resolution>
         </range>
         <noise>
           <type>gaussian</type>
@@ -459,7 +366,7 @@
         <frameName>velodyne</frameName>
         <organize_cloud>false</organize_cloud>
         <min_range>0.9</min_range>
-        <max_range>130</max_range>
+        <max_range>60</max_range>
         <gaussianNoise>0.008</gaussianNoise>
       </plugin>
     </sensor>
@@ -474,9 +381,9 @@
       <always_on>true</always_on>
       <update_rate>100</update_rate>
       <visualize>true</visualize>
-      <topic>imu</topic>
+      <topic>imu/data</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <topicName>imu</topicName>
+        <topicName>imu/data</topicName>
         <bodyName>imu_link</bodyName>
         <updateRateHZ>10.0</updateRateHZ>
         <gaussianNoise>0.0</gaussianNoise>
@@ -488,27 +395,5 @@
       <pose>0 0 0 0 0 0</pose>
     </sensor>
   </gazebo>
-
-    <gazebo reference="imu_link2">
-    <gravity>true</gravity>
-    <sensor name="imu_sensor2" type="imu">
-      <always_on>true</always_on>
-      <update_rate>100</update_rate>
-      <visualize>true</visualize>
-      <topic>imu/data</topic>
-      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin2">
-        <topicName>imu/data</topicName>
-        <bodyName>imu_link2</bodyName>
-        <updateRateHZ>10.0</updateRateHZ>
-        <gaussianNoise>0.0</gaussianNoise>
-        <xyzOffset>0 0 0</xyzOffset>
-        <rpyOffset>0 0 0</rpyOffset>
-        <frameName>imu_link2</frameName>
-        <initialOrientationAsReference>false</initialOrientationAsReference>
-      </plugin>
-      <pose>0 0 0 0 0 0</pose>
-    </sensor>
-  </gazebo>
-  <!--*********************************************************************-->
 
 </robot>

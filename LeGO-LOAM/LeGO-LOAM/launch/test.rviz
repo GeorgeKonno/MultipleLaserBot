@@ -4,7 +4,10 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /TF1/Frames1
+        - /map1
+        - /base_link1
         - /Imu1
       Splitter Ratio: 0.703999996
     Tree Height: 722
@@ -344,7 +347,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 11
+      Max Intensity: 0
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Trajectory
@@ -452,8 +455,8 @@ Visualization Manager:
     - Alpha: 0.5
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.94063091
-        Min Value: -0.432784915
+        Max Value: 2.31078935
+        Min Value: -0.183729306
         Value: true
       Axis: Y
       Channel Name: intensity
@@ -534,7 +537,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 29.9699783
+      Distance: 17.7247505
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -549,10 +552,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.51479661
+      Pitch: 0.704797029
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 1.28051686
+      Yaw: 4.61050415
     Saved: ~
 Window Geometry:
   Displays:
